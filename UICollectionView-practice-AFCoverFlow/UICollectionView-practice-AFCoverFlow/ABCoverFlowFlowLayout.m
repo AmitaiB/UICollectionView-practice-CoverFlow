@@ -75,9 +75,9 @@
     return attributes;
 }
 
--(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
-    
-}
+//-(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
+//
+//}
 
 #pragma mark - Helper methods
 
@@ -89,6 +89,54 @@
 }
 
 -(void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)attributes forVisibleRect:(CGRect)visibleRect {
+        //Applies the cover flow effect to the given layout attributes.
+    
+        //We want to skip the supplementary views. (nil == cell.)
+    if (attributes.representedElementKind) return;
+    
+// Calculate the 𝚫x from: visibleRect.center to: attributes.center.
+// Then normalize it so we can compare them all. This way, all items further away than the activeDistance get the same transform.
+    
+    CGFloat distanceFromVisibleRectToItem = CGRectGetMidX(visibleRect) - attributes.center.x;
+    CGFloat normalizedDistance = distanceFromVisibleRectToItem / ACTIVE_DISTANCE;
+    BOOL isOnTheLeft = distanceFromVisibleRectToItem > 0;
+    CATransform3D transform = CATransform3DIdentity;
+    
+    CGFloat maskAlpha = 0.0f;
+    
+    if (fabsf(distanceFromVisibleRectToItem) < ACTIVE_DISTANCE) {
+            //We're close enough to mid-x to apply the transform.
+            //???: Edification: Grok this!
+        transform = CATransform3DTranslate(CATransform3DIdentity, (isOnTheLeft? -1 : 1) * FLOW_OFFSET * ABS(distanceFromVisibleRectToItem / TRANSLATE_DISTANCE), 0, (1 - fabsf(normalizedDistance)) * 40000 + (isOnTheLeft? 200 : 0));
+        
+            //Set the perspective of the transform.
+        transform.m34 = -1/(4.6777 * self.itemSize.width);
+        
+            //Set the zoom factor.
+        CGFloat zoom = 1 + ZOOM_FACTOR * (1 - ABS(normalizedDistance));
+        transform = CATransform3DRotate(transform, (isOnTheLeft? 1 : -1) * fabsf(normalizedDistance) * 45 * M_PI / 180, 0, 1, 0);
+        transform = CATransform3DScale(transform, zoom, zoom, 1);
+        attributes.zIndex = 1;
+        
+        CGFloat ratioToCenter = (ACTIVE_DISTANCE - fabsf(distanceFromVisibleRectToItem)) / ACTIVE_DISTANCE;
+            //Interpolate between 0.0f and INACTIVE_GREY_VALUE
+        maskAlpha = INACTIVE_GREY_VALUE + ratioToCenter * (-INACTIVE_GREY_VALUE);
+    }
+    else
+    {
+            //We're too far away; just apply a standard perspective transform.
+        
+        transform.m34 = -1/(4.6777 * self.itemSize.width);
+        transform = CATransform3DTranslate(transform, (isOnTheLeft? -1 : 1) * FLOW_OFFSET, 0, 0);
+        transform = CATransform3DRotate(transform, (isOnTheLeft? 1 : -1) * 45 * M_PI / 180, 0, 1, 0);
+        attributes.zIndex = 0;
+        
+        maskAlpha = INACTIVE_GREY_VALUE;
+    }
+    
+    attributes.transform3D = transform;
+    
+        //Rasterize the cells for smoother edges.
     
 }
 
