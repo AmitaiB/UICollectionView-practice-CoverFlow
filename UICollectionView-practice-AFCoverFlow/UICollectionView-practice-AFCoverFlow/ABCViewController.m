@@ -9,11 +9,11 @@
 #import "ABCViewController.h"
 
     //Views
-    //cell
-    //layout
+#import "ABCollectionViewCell.h"
+#import "ABCoverFlowFlowLayout.h"
 
     //Models
-    //photomodel
+#import "ABPhotoModel.h"
 
 @interface ABCViewController (Private)
 
@@ -28,10 +28,44 @@
     
     UISegmentedControl *layoutChangeSegmentedControl;
     
-    
+    ABCoverFlowFlowLayout *coolFlowLayout;
+    UICollectionViewFlowLayout *boringCollectionViewLayout;
 }
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const cellReuseID = @"CellReuseID";
+
+-(void)loadView {
+        //Create our view
+    
+        //Create our awesome cover flow layout
+    coolFlowLayout = [ABCoverFlowFlowLayout new];
+    
+        //Create a basic flow layout that will accomodate three columsn in portrait
+    boringCollectionViewLayout                         = [UICollectionViewFlowLayout new];
+    boringCollectionViewLayout.itemSize                = CGSizeMake(120, 120);
+    boringCollectionViewLayout.minimumLineSpacing      = 10.0f;
+    boringCollectionViewLayout.minimumInteritemSpacing = 10.0f;
+    boringCollectionViewLayout.sectionInset            = UIEdgeInsetsZero;
+
+        //Create a new collection view with our flow layout and set the datasource and delegate
+    UICollectionView *photoCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:boringCollectionViewLayout];
+    photoCollectionView.dataSource        = self;
+    photoCollectionView.delegate          = self;
+    
+        //Register our classes
+    [photoCollectionView registerClass:[ABCollectionViewCell class] forCellWithReuseIdentifier:cellReuseID];
+    
+        // Set up the collection view geometry to cover the whole screen in any orientation and other view properties
+    photoCollectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    photoCollectionView.allowsSelection  = NO;
+    photoCollectionView.indicatorStyle   = UIScrollViewIndicatorStyleWhite;
+    
+        // Finally, set our collectionView (since we are a collection view controller, this also sets self.view)
+    self.collectionView = photoCollectionView;
+    
+        // Set up our model
+    [self setupModel];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,7 +74,7 @@ static NSString * const reuseIdentifier = @"Cell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellReuseID];
     
     // Do any additional setup after loading the view.
 }
@@ -74,7 +108,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellReuseID forIndexPath:indexPath];
     
     // Configure the cell
     
