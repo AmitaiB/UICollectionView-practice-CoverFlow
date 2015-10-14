@@ -30,7 +30,7 @@
     [self.contentView insertSubview:maskView aboveSubview:imageView];
     
         // This will make the rest of the cell outside the imageView appear transparent against a black(?) background.
-    self.backgroundColor = [UIColor blackColor];
+    self.backgroundColor = [UIColor darkGrayColor];
     
     return self;
 }
