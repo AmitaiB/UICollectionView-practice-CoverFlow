@@ -53,12 +53,9 @@
         //First populate an array of the standard attributes...
     NSArray *layoutAttributesArray = [super layoutAttributesForElementsInRect:rect];
     
-        //Grabs the rect of the *visible* collectionView
-    CGRect visibleRect =
-    CGRectMake(self.collectionView.contentOffset.x,
-               self.collectionView.contentOffset.y,
-               CGRectGetWidth(self.collectionView.bounds),
-               CGRectGetHeight(self.collectionView.bounds));
+        //Grabs the rect of the *visible* collectionView.
+        //We don't want to call the method in the loop.
+    CGRect visibleRect = [self currentlyVisibleRect];
     
     for (UICollectionViewLayoutAttributes *attributes in layoutAttributesArray) {
             //We will only lay out cells that are visible, for performance.
@@ -69,7 +66,27 @@
     return layoutAttributesArray;
 }
 
+-(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
+
+    [self applyLayoutAttributes:attributes forVisibleRect:[self currentlyVisibleRect]];
+    
+    return attributes;
+}
+
+-(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
+    
+}
+
 #pragma mark - Helper methods
+
+    // Calculates the rect of the visible part of the  collection view.
+-(CGRect)currentlyVisibleRect {
+    CGRect visibleRect = CGRectMake(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y, CGRectGetWidth(self.collectionView.bounds), CGRectGetHeight(self.collectionView.bounds));
+    
+    return visibleRect;
+}
 
 -(void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)attributes forVisibleRect:(CGRect)visibleRect {
     
