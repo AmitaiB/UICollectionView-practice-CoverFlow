@@ -11,6 +11,6 @@
 @interface ABCollectionViewLayoutAttributes : UICollectionViewLayoutAttributes
 
 @property (nonatomic, assign) BOOL shouldRasterize;
-@property (nonatomic, strong) CGFloat maskingValue;
+@property (nonatomic, assign) CGFloat maskingValue;
 
 @end
