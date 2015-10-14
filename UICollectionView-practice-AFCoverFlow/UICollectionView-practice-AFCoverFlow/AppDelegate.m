@@ -8,16 +8,21 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+#import "ABCViewController.h"
 
-@end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+        // Override point for customization after application launch.
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[ABCViewController new]];
+    navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.viewController = navigationController;
+
+    self.window.rootViewController = self.viewController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

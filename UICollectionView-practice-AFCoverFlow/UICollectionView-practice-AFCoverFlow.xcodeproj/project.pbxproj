@@ -11,6 +11,7 @@
 		38C1B1941BCDF0700069A262 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B1931BCDF0700069A262 /* AppDelegate.m */; };
 		38C1B1961BCDF0700069A262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C1B1951BCDF0700069A262 /* Assets.xcassets */; };
 		38C1B1991BCDF0700069A262 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C1B1971BCDF0700069A262 /* LaunchScreen.storyboard */; };
+		38C1B1A41BCE03460069A262 /* ABCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B1A31BCE03460069A262 /* ABCViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,9 @@
 		38C1B1951BCDF0700069A262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38C1B1981BCDF0700069A262 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38C1B19A1BCDF0700069A262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38C1B1A01BCE02610069A262 /* Cover Flow-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Cover Flow-Prefix.pch"; sourceTree = "<group>"; };
+		38C1B1A21BCE03460069A262 /* ABCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCViewController.h; sourceTree = "<group>"; };
+		38C1B1A31BCE03460069A262 /* ABCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 		38C1B18E1BCDF0700069A262 /* UICollectionView-practice-AFCoverFlow */ = {
 			isa = PBXGroup;
 			children = (
+				38C1B1A11BCE03240069A262 /* Controllers */,
 				38C1B1921BCDF0700069A262 /* AppDelegate.h */,
 				38C1B1931BCDF0700069A262 /* AppDelegate.m */,
 				38C1B1951BCDF0700069A262 /* Assets.xcassets */,
@@ -67,8 +72,18 @@
 			isa = PBXGroup;
 			children = (
 				38C1B1901BCDF0700069A262 /* main.m */,
+				38C1B1A01BCE02610069A262 /* Cover Flow-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38C1B1A11BCE03240069A262 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				38C1B1A21BCE03460069A262 /* ABCViewController.h */,
+				38C1B1A31BCE03460069A262 /* ABCViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +157,7 @@
 			files = (
 				38C1B1941BCDF0700069A262 /* AppDelegate.m in Sources */,
 				38C1B1911BCDF0700069A262 /* main.m in Sources */,
+				38C1B1A41BCE03460069A262 /* ABCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "UICollectionView-practice-AFCoverFlow/Cover Flow-Prefix.pch";
 				INFOPLIST_FILE = "UICollectionView-practice-AFCoverFlow/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-v.UICollectionView-practice-AFCoverFlow";
@@ -254,6 +271,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "UICollectionView-practice-AFCoverFlow/Cover Flow-Prefix.pch";
 				INFOPLIST_FILE = "UICollectionView-practice-AFCoverFlow/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-v.UICollectionView-practice-AFCoverFlow";
@@ -280,6 +298,7 @@
 				38C1B19F1BCDF0700069A262 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
