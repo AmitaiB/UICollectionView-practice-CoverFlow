@@ -100,7 +100,7 @@ static NSString * const cellReuseID = @"CellReuseID";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellReuseID forIndexPath:indexPath];
+    ABCollectionViewCell *cell = (ABCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellReuseID forIndexPath:indexPath];
     
     // Configure the cell
     
@@ -123,8 +123,7 @@ static NSString * const cellReuseID = @"CellReuseID";
 
 
 
-
-@implementation AFViewController (Private)
+@implementation ABCViewController (Private)
 
 -(void)setupModel
 {
