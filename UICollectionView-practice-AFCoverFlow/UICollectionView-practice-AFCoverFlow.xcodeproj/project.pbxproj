@@ -13,6 +13,7 @@
 		38C1B1991BCDF0700069A262 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C1B1971BCDF0700069A262 /* LaunchScreen.storyboard */; };
 		38C1B1A41BCE03460069A262 /* ABCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B1A31BCE03460069A262 /* ABCViewController.m */; settings = {ASSET_TAGS = (); }; };
 		38C1B1AA1BCE05BE0069A262 /* ABPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B1A91BCE05BE0069A262 /* ABPhotoModel.m */; settings = {ASSET_TAGS = (); }; };
+		38C1B1AD1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B1AC1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		38C1B1A31BCE03460069A262 /* ABCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCViewController.m; sourceTree = "<group>"; };
 		38C1B1A81BCE05BE0069A262 /* ABPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPhotoModel.h; sourceTree = "<group>"; };
 		38C1B1A91BCE05BE0069A262 /* ABPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPhotoModel.m; sourceTree = "<group>"; };
+		38C1B1AB1BCE06650069A262 /* ABCollectionViewLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCollectionViewLayoutAttributes.h; sourceTree = "<group>"; };
+		38C1B1AC1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCollectionViewLayoutAttributes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 		38C1B1A51BCE05270069A262 /* Collection View Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				38C1B1AB1BCE06650069A262 /* ABCollectionViewLayoutAttributes.h */,
+				38C1B1AC1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m */,
 			);
 			name = "Collection View Extensions";
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38C1B1941BCDF0700069A262 /* AppDelegate.m in Sources */,
+				38C1B1AD1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m in Sources */,
 				38C1B1911BCDF0700069A262 /* main.m in Sources */,
 				38C1B1A41BCE03460069A262 /* ABCViewController.m in Sources */,
 				38C1B1AA1BCE05BE0069A262 /* ABPhotoModel.m in Sources */,
