@@ -137,6 +137,9 @@
     attributes.transform3D = transform;
     
         //Rasterize the cells for smoother edges.
+    [(ABCollectionViewLayoutAttributes *)attributes setShouldRasterize:YES];
+        [(ABCollectionViewLayoutAttributes *)attributes
+         setMaskingValue:maskAlpha];
     
 }
 
