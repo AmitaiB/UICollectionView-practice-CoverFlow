@@ -103,15 +103,54 @@ static NSString * const cellReuseID = @"CellReuseID";
     ABCollectionViewCell *cell = (ABCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellReuseID forIndexPath:indexPath];
     
     // Configure the cell
+    [self configureCell:cell forIndexPath:indexPath];
     
     return cell;
+}
+
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    if (collectionViewLayout == boringCollectionViewLayout) {
+            //A basic flow layout that will accomodate three columns in a portrait.
+        return UIEdgeInsetsMake(10, 20, 10, 20);
+    }
+    else
+    {
+        if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+                //Portrait is the same in either orientation
+            return UIEdgeInsetsMake(0, 70, 0, 70);
+        }
+        else
+        {
+                //We need to get the height of the main screen to see if we're running on a 4" screen. If so, we need extra side padding.
+                //UPDATE: There must be a better way to do this in iOS 9+...
+            if (CGRectGetHeight([[UIScreen mainScreen] bounds]) > 480) {
+                return UIEdgeInsetsMake(0, 190, 0, 190);
+            }
+            else
+            {
+                return UIEdgeInsetsMake(0, 150, 0, 150);
+            }
+        }
+    }
 }
 
 #pragma mark - UI Interaction
  
  -(void)layoutChangesSegmentedControlDidChangeValue:(id)sender
  {
+         // Change to the alternate layout
      
+     if (layoutChangeSegmentedControl.selectedSegmentIndex == 0) {
+         [self.collectionView setCollectionViewLayout:boringCollectionViewLayout animated:NO];
+     }
+     else
+     {
+         [self.collectionView setCollectionViewLayout:coolFlowLayout animated:NO];
+     }
+     
+         // Invalidate the new layout
+     [self.collectionView.collectionViewLayout invalidateLayout];
  }
 
 @end
