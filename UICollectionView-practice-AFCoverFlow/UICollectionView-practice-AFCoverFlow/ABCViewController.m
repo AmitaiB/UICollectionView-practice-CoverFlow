@@ -70,41 +70,33 @@ static NSString * const cellReuseID = @"CellReuseID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
+        //Create a segControl in the navBar
+    layoutChangeSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Boring", @"Cover Flow"]];
+    layoutChangeSegmentedControl.selectedSegmentIndex = 0;
+    [layoutChangeSegmentedControl addTarget:self action:@selector(layoutChangesSegmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = layoutChangeSegmentedControl;
+}
+
+#pragma mark - Helper methods
+
+-(ABPhotoModel *)photoModelForIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.item >= [photoModelArray count]) return nil;
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellReuseID];
-    
-    // Do any additional setup after loading the view.
+    return photoModelArray[indexPath.item];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)configureCell:(ABCollectionViewCell *)cell forIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setImage:[[self photoModelForIndexPath:indexPath] image]];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - === UICollectionViewDataSource ===
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-#pragma mark <UICollectionViewDataSource>
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+        //An item for each photo.
+    return [photoModelArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -115,36 +107,12 @@ static NSString * const cellReuseID = @"CellReuseID";
     return cell;
 }
 
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
+#pragma mark - UI Interaction
+ 
+ -(void)layoutChangesSegmentedControlDidChangeValue:(id)sender
+ {
+     
+ }
 
 @end
 
