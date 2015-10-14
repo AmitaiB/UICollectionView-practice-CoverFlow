@@ -75,9 +75,39 @@
     return attributes;
 }
 
-//-(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
-//
-//}
+//This method provides allows us to define where the collection view will “snap” to.
+/**
+ 1) Use the existing code in layoutAttributesForElementsInRect: to get the attributes for the elements in the proposed rect.
+ 2) Find the attribute whose item will be closest to the center of the proposed visible rect.
+ 3) Find out how far away that item will be and,
+ 4) ...return an adjusted content offset that centers that view.
+ */
+-(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
+    CGFloat offsetAdjustment = MAXFLOAT;
+    CGFloat horizontalCenter = proposedContentOffset.x + (CGRectGetWidth(self.collectionView.bounds) / 2.0);
+
+        //Use the center to find the proposed visible rect.
+    CGRect proposedRect = CGRectMake(proposedContentOffset.x, 0.0, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+
+        //Get the attributes for the cells in that rect.
+    NSArray *array = [self layoutAttributesForElementsInRect:proposedRect];
+    
+        //This loop will find the closest cell to the propsed center of the collection view.
+    for (UICollectionViewLayoutAttributes *layoutAttributes in array)
+    {
+            //We want to skip supplementary views
+        if (layoutAttributes.representedElementKind != UICollectionElementCategoryCell) continue;
+        
+            //Determine if this layout attribute's cell is closer than the closest we have so far.
+        CGFloat itemHoritzontalCenter = layoutAttributes.center.x;
+        if (fabsf(itemHoritzontalCenter - horizontalCenter) < fabsf(offsetAdjustment))
+        {
+            offsetAdjustment = itemHoritzontalCenter - horizontalCenter;
+        }
+    }
+    
+    return CGPointMake(proposedContentOffset.x + offsetAdjustment, proposedContentOffset.y);
+}
 
 #pragma mark - Helper methods
 
