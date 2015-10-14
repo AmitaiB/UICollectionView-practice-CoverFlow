@@ -8,11 +8,28 @@
 
 #import "ABCViewController.h"
 
-@interface ABCViewController ()
+    //Views
+    //cell
+    //layout
+
+    //Models
+    //photomodel
+
+@interface ABCViewController (Private)
+
+-(void)setupModel;
 
 @end
 
 @implementation ABCViewController
+{
+        //Array of selection objects
+    NSArray *photoModelArray;
+    
+    UISegmentedControl *layoutChangeSegmentedControl;
+    
+    
+}
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -94,5 +111,48 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+
+@end
+
+
+
+
+
+
+
+
+
+@implementation AFViewController (Private)
+
+-(void)setupModel
+{
+    photoModelArray = @[
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"1.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"2.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"3.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"4.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"5.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"6.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"7.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"8.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"9.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"10.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"11.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"12.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"13.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"17.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"15.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"14.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"16.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"18.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"19.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"21.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"21.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"22.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"23.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"24.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"25.jpg"]],
+                        [ABPhotoModel photoModelWithImage:[UIImage imageNamed:@"26.jpg"]]];
+}
 
 @end

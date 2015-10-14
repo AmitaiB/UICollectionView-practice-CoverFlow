@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ABCViewController : UICollectionViewController
+@interface ABCViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
 @end
