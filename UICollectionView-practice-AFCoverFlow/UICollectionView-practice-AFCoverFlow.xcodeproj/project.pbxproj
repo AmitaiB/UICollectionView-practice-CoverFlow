@@ -15,6 +15,7 @@
 		38C1B1AA1BCE05BE0069A262 /* ABPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B1A91BCE05BE0069A262 /* ABPhotoModel.m */; settings = {ASSET_TAGS = (); }; };
 		38C1B1AD1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B1AC1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m */; settings = {ASSET_TAGS = (); }; };
 		38C1B1B01BCE0B4B0069A262 /* ABCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B1AF1BCE0B4B0069A262 /* ABCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		38C1B1B31BCE0E830069A262 /* ABCoverFlowFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1B1B21BCE0E830069A262 /* ABCoverFlowFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		38C1B1AC1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCollectionViewLayoutAttributes.m; sourceTree = "<group>"; };
 		38C1B1AE1BCE0B4B0069A262 /* ABCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCollectionViewCell.h; sourceTree = "<group>"; };
 		38C1B1AF1BCE0B4B0069A262 /* ABCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCollectionViewCell.m; sourceTree = "<group>"; };
+		38C1B1B11BCE0E830069A262 /* ABCoverFlowFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCoverFlowFlowLayout.h; sourceTree = "<group>"; };
+		38C1B1B21BCE0E830069A262 /* ABCoverFlowFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCoverFlowFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 		38C1B1A51BCE05270069A262 /* Collection View Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				38C1B1B11BCE0E830069A262 /* ABCoverFlowFlowLayout.h */,
+				38C1B1B21BCE0E830069A262 /* ABCoverFlowFlowLayout.m */,
 				38C1B1AB1BCE06650069A262 /* ABCollectionViewLayoutAttributes.h */,
 				38C1B1AC1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m */,
 			);
@@ -199,6 +204,7 @@
 				38C1B1AD1BCE06650069A262 /* ABCollectionViewLayoutAttributes.m in Sources */,
 				38C1B1911BCDF0700069A262 /* main.m in Sources */,
 				38C1B1A41BCE03460069A262 /* ABCViewController.m in Sources */,
+				38C1B1B31BCE0E830069A262 /* ABCoverFlowFlowLayout.m in Sources */,
 				38C1B1AA1BCE05BE0069A262 /* ABPhotoModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
